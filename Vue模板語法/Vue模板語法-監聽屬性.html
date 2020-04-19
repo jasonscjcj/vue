@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue模板語法-監聽屬性</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <label>搜索︰</label>
+            <input type="text" name="keyword" v-model:value="keyword">
+        </div>
+        <div>
+            <p>{{answer}}</p>
+        </div>
+    </div>
+</body>
+</html>
+<script src="../lib/vue-2.6.11/dist/vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            keyword:"",
+            answer:""
+        },
+        watch:{
+            keyword:function(newValue,oldValue){
+                console.log(newValue)
+                console.log(oldValue)
+                this.answer = "加載中..."
+                //定時器 定時執行函數 執行時間為毫秒
+                setTimeout(() =>{
+                    this.answer = "搜索結果︰" + newValue
+                }, 1000);
+            }
+        }
+    })
+</script>

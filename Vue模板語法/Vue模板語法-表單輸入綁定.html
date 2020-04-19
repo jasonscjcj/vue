@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue模板語法-表單輸入綁定</title>
+</head>
+<body>
+    <div id="app">
+        <!--Text & TextArea-->
+        <input type="text" v-model:value="message" placeholder="請輸入..."></input>
+        <textarea name="" id="" cols="30" rows="10" v-model:value="messageArea"></textarea>
+        <p>輸入Text的內容是︰{{message}}</p>
+        <p>輸入TextArea的內容是︰{{messageArea}}</p>
+
+        <!--Checkbox-->
+        <input type="checkbox" name="" id="" value="1" v-model="checkedNames">
+        <label for="Jason">Jason</label>
+        <input type="checkbox" name="" id="" value="2" v-model="checkedNames">
+        <label for="Jason">Jasons</label>
+        <input type="checkbox" name="" id="" value="3" v-model="checkedNames">
+        <label for="Jason">Jasoncj</label>
+        <br>
+        <span>Checked names : {{checkedNames}}</span>
+        <br>
+        <!--Radio-->
+        <input type="radio" value="男" v-model="gender">
+        <label>男</label>
+        <br>
+        <input type="radio" value="女" v-model="gender">
+        <label>女</label>
+        <br>
+        <span>Picked: {{ gender }}</span>
+
+        <!--Select-->
+        <select v-model="selected">
+            <option disabled value="">請選擇...</option>
+            <option value="value1">1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+        </select>
+        <br>
+        <span>Selected: {{selected}}</span>
+        <br>
+        <input type="text" v-model:value.lazy="messageLazy">
+        <input v-model.lazy="messageLazy" >
+        <br>
+        <input type="text" v-model.number="number">
+        <br>
+        <input type="text" v-model.trim="msg">
+        <p>{{msg}}</p>
+    </div>
+</body>
+</html>
+<script src="../lib/vue-2.6.11/dist/vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            message:"",
+            messageArea:"",
+            checkedNames:[],
+            gender:"",
+            selected:"",
+            messageLazy:"",
+            number:0,
+            msg:"",
+        },
+        watch:{
+            msg:function(){
+                console.log(this.msg)
+            }
+        }
+    })
+</script>
