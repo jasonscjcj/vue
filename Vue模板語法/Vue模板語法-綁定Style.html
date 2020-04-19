@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue模板語法-绑定Style</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 绑定Style -->
+        <p v-bind:style="{backgroundColor:background}">Hello World!!!</p>
+        <p v-bind:style="{'background-color':background}">Hello World!!!</p>
+        <p :style="psStyle">Hello World!!!</p>
+        <p :style="[pclass1, pclass2]">Hellow World!!!</p>
+    </div>
+</body>
+
+</html>
+
+<script src="../lib/vue-2.6.11/dist/vue.js"></script>
+
+<script>
+    //绑定Style
+    new Vue({
+        el: "#app",
+        data: {
+            background: 'red',
+            psStyle: {
+                //'background-color': '#' + 'aabe33',
+                backgroundColor: '#' + 'aa3233',
+                'font-size': '20px',
+            },
+            pclass1: {
+                'background-color': '#' + 'aabe33',
+                fontSize: '50px',
+            },
+            pclass2: {
+                'font-weight': 800,
+            }
+        }
+    })
+</script>

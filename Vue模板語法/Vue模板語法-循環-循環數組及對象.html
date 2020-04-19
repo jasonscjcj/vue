@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue模板語法-循環(上)</title>
+</head>
+
+<body>
+    <div id="app">
+        <table>
+            <tr>
+                <th>序號</th>
+                <th>標題</th>
+                <th>作者</th>
+            </tr>
+            <!-- <tr v-for="book in books">
+                <td></td>
+                <td>{{book.title}}</td>
+                <td>{{book.author}}</td>
+            </tr> -->
+            <!-- 第一個位置=數據, 第二個位置=索引 (book, index) -->
+            <tr v-for="(book,index) in booklist">
+                <td>{{index+1}}</td>
+                <td>{{book.title}}</td>
+                <td>{{book.author}}</td>
+            </tr>
+        </table>
+        <div v-for="(value,key) in person">
+            {{key}} : {{value}}
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script src="../lib/vue-2.6.11/dist/vue.js"></script>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            booklist: [{
+                    'title': 'python',
+                    'author': 'python author'
+                },
+                {
+                    'title': 'java',
+                    'author': 'java author'
+                },
+                {
+                    'title': 'PHP',
+                    'author': 'PHP author'
+                },
+                {
+                    'title': 'C++',
+                    'author': 'C++ author'
+                },
+            ],
+            person: {
+                //key = "username" 
+                //value = "jason"
+                "username": "jason",
+                "age": 18,
+                "address": "hk",
+            }
+        }
+    })
+</script>

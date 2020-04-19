@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <template v-if="loginType == 'username'">
+            <label for="">用戶名︰</label>
+            <input type="text" placeholder="用戶名" key="username"></input>
+        </template>
+        <template v-else-if="loginType == 'email'">
+            <label for="">郵箱︰</label>
+            <input type="text" placeholder="郵箱" key="email"></input>
+        </template>
+        <!-- <button @click></button> -->
+        <button v-on:click="changeLoginType">切換登錄類型</button>
+    </div>
+</body>
+
+</html>
+
+<script src="../lib/vue-2.6.11/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            loginType: 'email',
+        },
+        methods: {
+            changeLoginType: function () {
+                this.loginType = this.loginType == 'username' ? 'email' : 'username'
+            }
+        }
+    })
+</script>

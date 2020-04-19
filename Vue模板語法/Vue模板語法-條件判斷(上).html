@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue模板語法-條件判斷(上)</title>
+</head>
+
+<body>
+    <!-- div#app <div id='app'><div> -->
+    <!-- div.app <div class='app'><div> -->
+    <!-- div*3 生成3個div-->
+
+    <div id="app">
+        <p v-if="weather == 'summer'">今天去約女神</p>
+        <p v-else-if="weather == 'rain'">今天在家打機</p>
+        <p v-else>今天打邊爐</p>
+
+        <template v-if="age < 18">
+            <p>上網</p>
+            <p>偷學</p>
+        </template>
+        <template v-else-if="age >= 18 && age < 25">
+            <p>找工作</p>
+            <p>找女朋友</p>
+        </template>
+        <template v-else>
+            <p>工資多少</p>
+            <p>結婚</p>
+        </template>
+    </div>
+</body>
+
+</html>
+
+<script src="../lib/vue-2.6.11/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            weather: 'summer',
+            age: 8
+        }
+    })
+</script>

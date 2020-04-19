@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue模板語法-循環(下)-保持狀態</title>
+</head>
+
+<body>
+    <div id="app">
+        <div v-for="book in booklist" :key="book">
+            <label>{{book}}</label>
+            <input type="text" v-bind:placeholder="book"></input>
+        </div>
+        <button @click="changeBooks">更換圖書</button>
+    </div>
+</body>
+
+</html>
+<script src="../lib/vue-2.6.11/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            booklist: ['Python', 'java', 'PHP', 'C++']
+        },
+        methods: {
+            changeBooks: function () {
+                this.booklist.sort(function (a, b) {
+                    //正數 = True , 負數 = False
+                    return 5 - Math.random() * 10
+                })
+            }
+        }
+    })
+</script>

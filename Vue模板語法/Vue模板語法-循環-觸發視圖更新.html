@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue模板語法-循環-觸發視圖更新</title>
+</head>
+
+<body>
+    <div id="app" :style="pStyle">
+        
+        <div v-for="book in booklist">
+            <label>{{book}}</label>
+        </div>
+        <div v-for="(value,key) in person">
+            <label>{{key}}:{{value}}</label>
+        </div>
+        <button @click="updatelist1">更新數據 - 直接賦值1</button><br>
+        <button @click="updatelist2">更新數據 - 直接賦值2</button><br>
+        <button @click="updatelist3">更新數據 - 將元素放到最後面</button><br>
+        <button @click="updatelist4">更新數據 - 刪除最後一個元素</button><br>
+        <button @click="updatelist5">更新數據 - 刪除數組第一個元素</button><br>
+        <button @click="updatelist6">更新數據 - 在數組的開頭位置添加一個元素</button><br>
+        <button @click="updatelist7">更新數據 - 向booklist第0個位置添加元素</button><br>
+        <button @click="updatelist8">更新數據 - 下標從0開始，刪除2個元素</button><br>
+        <button @click="updatelist9">更新數據 - 下標從0開始，替換2個元素</button><br>
+        <button @click="updatelist10">更新數據 - 隨機排序</button><br>
+        <button @click="updatelist11">更新數據 - 反轉</button><br>
+        <button @click="updatelist12">更新數據 - 改名</button><br>
+        <button @click="updatelist13">更新數據 - 加屬性</button><br>
+    </div>
+
+</body>
+
+</html>
+<script src="../lib/vue-2.6.11/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            booklist: ['Python', 'JAVA', 'PHP', 'C++'],
+            person: {
+                username: "Jason"
+            },
+            pStyle: {
+                fontSize: '24px'
+            },
+        },
+
+        methods: {
+            updatelist1: function () {
+                //直接賦值1
+                this.booklist = ['C#']
+            },
+            updatelist2: function () {
+                //直接賦值2
+                this.person.username = 'jason'
+            },
+            updatelist3: function () {
+                //將元素放到最後面
+                this.booklist.push("Redis")
+            },
+            updatelist4: function () {
+                //刪除最後一個元素
+                this.booklist.pop()
+            },
+            updatelist5: function () {
+                //刪除數組第一個元素
+                this.booklist.shift()
+            },
+            updatelist6: function () {
+                //在數組的開頭位置添加一個元素
+                this.booklist.unshift("new")
+            },
+            updatelist7: function () {
+                // 向books第0個位置添加元素
+                this.booklist.splice(0, 0, "金瓶梅")
+            },
+            updatelist8: function () {
+                // 下標從0開始，刪除2個元素
+                this.booklist.splice(0, 2)
+            },
+            updatelist9: function () {
+                // 下標從0開始，替換2個元素
+                this.booklist.splice(0, 2, '金瓶梅', '駱駝祥子')
+            },
+            updatelist10: function () {
+                // 隨機排序
+                this.booklist.sort(function (a, b) {
+                    a = Math.random()
+                    b = Math.random()
+                    return a - b
+                })
+            },
+            updatelist11: function () {
+                // 反轉
+                this.booklist.reverse()
+            },
+            updatelist12: function () {
+                // 改名
+                this.person.username = 'Jason改名'
+                
+            },
+            updatelist13:function (){
+                //加屬性
+                Vue.set(this.person, 'age', 18)
+            }
+        }
+    })
+</script>

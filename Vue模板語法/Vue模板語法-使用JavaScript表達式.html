@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue模板語法-使用JavaScript表达式</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 使用JavaScript表达式 -->
+        <!--字符串反轉-->
+        <p>{{ username.split(" ").reverse().join(" ") }}</p>
+        <!--表達式?True:False-->
+        <p v-bind:style="{color:color?'red':'blue'}">{{ username.split(" ").reverse().join(" ") }}</p>
+    </div>
+</body>
+
+</html>
+
+<script src="../lib/vue-2.6.11/dist/vue.js"></script>
+
+<script>
+    //使用JavaScript表达式
+    new Vue({
+        el: "#app",
+        data: {
+            username: "hello world",
+            color: false,
+        },
+    })
+</script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue模板語法-屬性綁定Class和Style</title>
+    <style>
+        .title {
+            font-size: 20px;
+            color: red;
+        }
+
+        .main-title {
+            font-weight: 800;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- 屬性綁定Class和Style -->
+        <p v-bind:class="class1">中國，加油!!!</p> <!-- class1: title , class2 : main-title-->
+        <p v-bind:class="[class1,class2]">中國，加油!!!</p><!--  class1: title , class2 : main-title-->
+        <p v-bind:class="class2">中國，加油!!!</p><!--  class1: title , class2 : main-title-->
+        <p v-bind:class="[title,main-title]">中國，加油!!!</p> <!--  會報錯-->
+        <p v-bind:class="{title:class1, 'main-title':class2}">Hello World !!!</p><!--  class1: true , class2 : true -->
+
+    </div>
+</body>
+
+</html>
+
+<script src="../lib/vue-2.6.11/dist/vue.js"></script>
+
+<script>
+    //屬性綁定Class和Style
+    new Vue({
+        el: "#app",
+        data: {
+            class1: "title",
+            class2: "main-title",
+            class1: true,
+            class2: true,
+        }
+    })
+</script>
