@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- username : <p>{{username}}</p> -->
+        username : <p>{{username}}</p>
+        password : <p>{{password}}</p>
+        <!-- {{demo()}} -->
+        <!-- <p @click="demo"></p> -->
+        <!-- <button v-on:click="demo">按鈕</button> -->
+        <button @click="demo">按鈕</button>
+        <p v-html="code"></p>
+        <div v-html="code"></div>
+        <!-- <img v-bind:src="{{imgsrc}}" alt=""> -->
+        <img v-bind:src="imgsrc" alt="">
+        <img v-bind:src="imgsrc2" alt="">
+    </div>
+</body>
+
+</html>
+
+<script src="lib/vue-2.6.11/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            "username": "Jason",
+            "password": 123,
+            "code": "<a href='https://www.google.com/'>Google</a>",
+            "imgsrc": "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png",
+            "imgsrc2": "../vueTutorials/img/Penguins.jpg",
+        },
+        methods: {
+            demo: function () {
+                //return "晩上好 " + this.username
+                this.username = "lgcode"
+            }
+        }
+    })
+</script>
