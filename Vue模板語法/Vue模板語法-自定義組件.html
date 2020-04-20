@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue模板語法-自定義組件</title>
 </head>
+
 <body>
     <div id="app">
         <button-counter></button-counter>
+        <button-counter></button-counter>
+        <button-counter></button-counter>
     </div>
 </body>
+
 </html>
 <script src="../lib/vue-2.6.11/dist/vue.js"></script>
 <script>
     //自定義組件 button-count 標簽名字
-    Vue.component('button-counter',{
-        template:'<button @click="count+=1">點撃了{{count}}次</button>',
-        data:function(){
-            return{ 
-                count:0
+    Vue.component('button-counter', {
+        template: '<button @click="count+=1">點撃了{{count}}次</button>',
+        data: function () {
+            return {
+                count: 0
             }
         }
     })
 
     new Vue({
-        el:"#app",
-        data:{
+        el: "#app",
+        data: {
 
         }
     })

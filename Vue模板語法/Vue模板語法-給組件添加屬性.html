@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue模板語法-給組件添加屬性</title>
+</head>
+
+<body>
+    <div id="app">
+        <book-list v-bind:books="books"></book-list>
+    </div>
+</body>
+
+</html>
+<script src="../lib/vue-2.6.11/dist/vue.js"></script>
+<script>
+    Vue.component('book-list', {
+        //給組件添加屬性
+        props: ['books'],
+        template: `
+        <table>
+            <tr>
+                <th>序號</th>
+                <th>標題</th>
+            </tr>
+            <tr v-for="(book,index) in books">
+                <td>{{index + 1}}</td>
+                <td>{{book.title}}</td>
+            </tr>
+        </table>
+                    `,
+
+    })
+
+    new Vue({
+        el: "#app",
+        data: {
+            books: [{
+                    "title": "python",
+                    "id": 1
+                },
+                {
+                    "title": "java",
+                    "id": 2
+                },
+                {
+                    "title": "php",
+                    "id": 3
+                },
+            ]
+        }
+    })
+</script>

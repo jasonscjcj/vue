@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue模板語法-自定義組件v-model</title>
+</head>
+
+<body>
+    <div id="app">
+        <stepper v-model:value="qtyCount"></stepper>
+    </div>
+</body>
+
+</html>
+
+<script src="../lib/vue-2.6.11/dist/vue.js"></script>
+<script>
+    // 計步器
+    Vue.component('stepper', {
+        props: ['count'],
+        model: {
+            //什麼情況下解發這個v-model的行為
+            event: 'count-changed',
+            prop: 'count'
+        },
+        template: `
+        <div>
+            <button @click="addqty">+</button>
+            <span>{{count}}</span>
+            <button @click="subqty">-</button>
+        </div>
+        `,
+        methods: {
+            addqty: function () {
+                this.$emit('count-changed', this.count + 1)
+            },
+            subqty: function () {
+                if (this.count > 0) {
+                    this.$emit('count-changed', this.count - 1)
+                }
+            }
+        }
+    })
+    new Vue({
+        el: "#app",
+        data: {
+            qtyCount: 0
+        }
+    })
+</script>

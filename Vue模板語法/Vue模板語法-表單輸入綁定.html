@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue模板語法-表單輸入綁定</title>
 </head>
+
 <body>
     <div id="app">
         <!--Text & TextArea-->
@@ -44,7 +46,7 @@
         <span>Selected: {{selected}}</span>
         <br>
         <input type="text" v-model:value.lazy="messageLazy">
-        <input v-model.lazy="messageLazy" >
+        <input v-model.lazy="messageLazy">
         <br>
         <input type="text" v-model.number="number">
         <br>
@@ -52,23 +54,24 @@
         <p>{{msg}}</p>
     </div>
 </body>
+
 </html>
 <script src="../lib/vue-2.6.11/dist/vue.js"></script>
 <script>
     new Vue({
-        el:"#app",
-        data:{
-            message:"",
-            messageArea:"",
-            checkedNames:[],
-            gender:"",
-            selected:"",
-            messageLazy:"",
-            number:0,
-            msg:"",
+        el: "#app",
+        data: {
+            message: "",
+            messageArea: "",
+            checkedNames: [],
+            gender: "",
+            selected: "",
+            messageLazy: "",
+            number: 0,
+            msg: "",
         },
-        watch:{
-            msg:function(){
+        watch: {
+            msg: function () {
                 console.log(this.msg)
             }
         }

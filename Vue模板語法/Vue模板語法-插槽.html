@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue模板語法-插槽</title>
+</head>
+
+<body>
+    <div id="app">
+        <nav-link :url="url">
+            <!-- {{name}} -->
+            <template v-slot:header>這個header</template>
+            <template v-slot:main>這個main</template>
+            <template v-slot:footer>這個footer</template>
+        </nav-link>
+    </div>
+</body>
+
+</html>
+<script src="../lib/vue-2.6.11/dist/vue.js"></script>
+<script>
+    Vue.component('nav-link', {
+        props: ['url'],
+        template: `<div>
+        <a v-bind:href="url">
+        <div>
+            <slot name="header"></slot>
+        </div>
+    </a>
+    <a v-bind:href="url">
+        <div>
+            <slot name="main"></slot>
+        </div>
+        </a>
+        <a v-bind:href="url">
+        <div>
+            <slot name="footer"></slot>
+        </div>
+        </a>
+    </div>
+        `,
+    })
+
+    new Vue({
+        el: "#app",
+        data: {
+            url: "http://google.com.hk/",
+            name: "個人中心"
+        }
+    })
+</script>

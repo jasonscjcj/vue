@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue模板語法-插槽作用域</title>
+</head>
+
+<body>
+    <div id="app">
+        <container>
+            <template v-slot:header="headerProps">
+                這是頭部區域
+                {{headerProps.navs}}
+            </template>
+            <template v-slot:footer="footerProps">
+                這是底部區域
+                {{footerProps.address}}
+            </template>
+        </container>
+    </div>
+</body>
+
+</html>
+<script src="../lib/vue-2.6.11/dist/vue.js"></script>
+<script>
+    Vue.component('container', {
+        template: `
+        <div>
+            <div>
+                <slot name="header" :navs="navs"></slot>
+            </div>
+            <div>
+                <slot name="footer" :address="address"></slot>
+            </div>
+        </div>
+        `,
+        data: function () {
+            return {
+                navs: ['新聞', 'hao123', '地圖'],
+                address: 'csc',
+            }
+        }
+    })
+
+    new Vue({
+        el: "#app"
+    })
+</script>

@@ -9,7 +9,7 @@
 
 <body>
     <div id="app" :style="pStyle">
-        
+
         <div v-for="book in booklist">
             <label>{{book}}</label>
         </div>
@@ -100,9 +100,9 @@
             updatelist12: function () {
                 // 改名
                 this.person.username = 'Jason改名'
-                
+
             },
-            updatelist13:function (){
+            updatelist13: function () {
                 //加屬性
                 Vue.set(this.person, 'age', 18)
             }

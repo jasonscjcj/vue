@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div id="app">
         <p>{{count}}</p>
-        <!-- <button @click="count+=1">+1</button> --> <!-- 簡寫方法 -->
+        <!-- <button @click="count+=1">+1</button> -->
+        <!-- 簡寫方法 -->
         <button v-on:click="add">+1</button>
         <button @click="sub">-1</button><br>
         <!--傳入event參數-->
         <button @click="sub2(2,$event)" value="jason" name="hello">-</button>
     </div>
 </body>
+
 </html>
 <script src="../lib/vue-2.6.11/dist/vue.js"></script>
 <script>
     new Vue({
-        el:"#app",
-        data:{
+        el: "#app",
+        data: {
             count: 0
         },
-        methods:{
-            add(){ //簡寫方法
+        methods: {
+            add() { //簡寫方法
                 this.count += 1
             },
-            sub:function(){
+            sub: function () {
                 this.count -= 1
             },
-            sub2:function(value, event){
+            sub2: function (value, event) {
                 console.log(event) //傳入event參數
                 console.log(event.target.value)
                 console.log(event.target.name)

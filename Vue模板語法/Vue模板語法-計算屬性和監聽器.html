@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue模板語法-計算屬性和監聽器</title>
 </head>
+
 <body>
     <div id="app">
         <!--v-model 雙向綁定-->
@@ -16,20 +18,21 @@
         <input type="number" name="area" v-bind:value="area" readonly></input>
     </div>
 </body>
+
 </html>
 
 <script src="../lib/vue-2.6.11/dist/vue.js"></script>
 <script>
     new Vue({
-        el:"#app",
-        data:{
-            length:0,
-            width:0,
+        el: "#app",
+        data: {
+            length: 0,
+            width: 0,
         },
         //計算屬性
-        computed:{
-            area:function(){
-                console.log(this.length , this.width)
+        computed: {
+            area: function () {
+                console.log(this.length, this.width)
                 return this.length * this.width;
             }
         }
