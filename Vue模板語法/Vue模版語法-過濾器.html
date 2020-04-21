@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{username|vstrip}}</p>
+        <p>{{username|vUpper}}</p>
+    </div>
+</body>
+
+</html>
+
+<script src="../lib/vue-2.6.11/dist/vue.js"></script>
+<script>
+    //全局過濾器
+    Vue.filter('vstrip', function (value) {
+        //console.log(value)
+        return value.trim();
+    })
+    new Vue({
+        el: "#app",
+        data: {
+            username: '    jason '
+        },
+        //本地過濾器
+        filters: {
+            vUpper: function (value) {
+                console.log(value)
+                if (!value) return ''
+                value = value.trim().toString()
+                console.log(value.charAt(0).toUpperCase() + value.slice(1))
+                return value.charAt(0).toUpperCase() + value.slice(1)
+            }
+        }
+    })
+</script>

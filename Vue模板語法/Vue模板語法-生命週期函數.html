@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue模板語法-生命週期函數</title>
+</head>
+
+<body>
+    <div id="app">
+        <p id="username">{{username}}</p>
+        <input type="text" v-model="username">
+
+        <error-view v-bind:message="message" v-if="message"></error-view>
+        <button @click="message=''">點擊</button>
+    </div>
+</body>
+
+</html>
+<script src="../lib/vue-2.6.11/dist/vue.js"></script>
+
+<script>
+    Vue.component('error-view', {
+        props: ['message'],
+        template: '<p style="color:red">{{message}}</p>',
+        beforeDestroy() {
+            //beforeDestroy：Vue實例或者是組件在被銷毀之前執行的函數。
+            //在這一個函數中Vue或者組件中所有的屬性都是可以使用的。
+            console.log("=====beforeDestroy=====");
+            console.log(this.message);
+            console.log("=====beforeDestroy=====");
+        },
+        destroyed() {
+            //destroyed：Vue實例或者是組件被銷毀後執行的。
+            //此時Vue實例上所有東西都會解綁，所有事件都會被移除，所有子元素都會被銷毀。
+            console.log("=====destroyed=====");
+            console.log(this.beforeDestroy);
+            console.log("=====destroyed=====");
+        }
+    })
+
+    new Vue({
+        el: "#app",
+        data: {
+            username: "jason",
+            message: '錯誤信息',
+        },
+        methods: {
+            demo: function () {
+                return "demo hello"
+            }
+        },
+        //beforeCreate︰Vue或者組件剛剛實例化，data、methods都還沒有被創建。
+        beforeCreate() {
+            console.log("=====beforeCreate=====");
+            console.log(this.username);
+            console.log(this.demo);
+            console.log("=====beforeCreate=====");
+        },
+        //created︰此時data和methods已經被創建，可以使用了。模板還沒有被編譯。
+        created() {
+            console.log("=====created=====");
+            console.log(this.username);
+            console.log(this.demo);
+            console.log("=====created=====");
+        },
+        //beforeMount︰created的下一階段。此時模板已經被編譯了，但是並沒有被掛在到網頁中。
+        beforeMount() {
+            console.log("=====beforeMount=====");
+            console.log(document.getElementById('username').innerText)
+            console.log("=====beforeMount=====");
+        },
+        //mounted︰模板代碼已經被加載到網頁中了。此時創建期間所有事情都已經準備好了，網頁開始運行了。
+        mounted() {
+            console.log("=====mounted=====");
+            console.log(document.getElementById('username').innerText)
+            console.log("=====mounted=====");
+        },
+        //beforeUpdate：在網頁網頁運行期間，data中的數據可能會進行更新。
+        //在這個階段，數據只是在data中更新了，但是並沒有在模板中進行更新，因此網頁中顯示的還是之前的。
+        beforeUpdate() {
+            console.log("=====beforeUpdate=====");
+            console.log(document.getElementById('username').innerText)
+            console.log("=====beforeUpdate=====");
+        },
+        //updated：數據在data中更新了，也在網頁中更新了。
+        updated() {
+            console.log("=====updated=====");
+            console.log(document.getElementById('username').innerText)
+            console.log("=====updated=====");
+        }
+    })
+</script>
