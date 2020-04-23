@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueRouter-404錯誤</title>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to="/">首頁</router-link>
+        <router-link to="/profile/123">個人中心</router-link>
+        <router-view></router-view>
+    </div>
+</body>
+
+</html>
+<script src="../lib/vue-2.6.11/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+    var index = Vue.extend({
+        template: "<h1>首頁</h1>"
+    })
+
+    var profile = Vue.extend({
+        template: "<h1>個人中心{{$route.params.userid}}</h1>",
+        mounted() {
+            // console.log(this.$route.params.userid)
+            if (this.$route.params.userid != '123') {
+                this.$router.replace('/404')
+            }
+        }
+    })
+
+    var notFound = Vue.extend({
+        template: "<p>404 Not Found</p>"
+    })
+
+    var router = new VueRouter({
+        routes: [{
+                path: "/",
+                component: index
+            },
+            {
+                path: "/profile/:userid",
+                component: profile
+            },
+            {
+                path: "*",
+                component: notFound
+            },
+            {
+                path: "/404",
+                component: notFound
+            },
+        ]
+    })
+    new Vue({
+        el: "#app",
+        router: router
+    })
+</script>

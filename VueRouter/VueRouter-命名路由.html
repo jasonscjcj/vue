@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueRouter-命名路由</title>
+</head>
+
+<body>
+    <div id="app">
+        <router-link v-bind:to="{name:'index'}">首面</router-link>
+        <router-link :to="{name:'profile',params:{userid:123}}">個人中心</router-link>
+        <router-view></router-view>
+    </div>
+</body>
+
+</html>
+
+<script src=" ../lib/vue-2.6.11/dist/vue.js"> </script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js">
+</script>
+
+<script>
+    var index = Vue.extend({
+        template: "<h1>首頁</h1>"
+    })
+    var profile = Vue.extend({
+        template: "<h1>個人中心</h1>"
+    })
+
+    var router = new VueRouter({
+        routes: [{
+                path: "/",
+                name: "index",
+                component: index
+            },
+            {
+                path: "/profile/:userid",
+                name: "profile",
+                component: profile
+            }
+        ]
+    })
+
+    new Vue({
+        el: "#app",
+        router: router
+    })
+</script>
