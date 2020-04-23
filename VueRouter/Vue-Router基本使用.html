@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue-Router基本使用</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <router-link to="/">首頁</router-link>
+            <router-link to="/music">音樂</router-link>
+            <!-- 路由出口 -->
+            <!-- 路由匹配到的組件將渲染在這裡 -->
+            <router-view></router-view>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="../lib/vue-2.6.11/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+    //component 組件的名字 extend 是沒有組件的名字
+    var index = Vue.extend({
+        template: "<h1>這是首頁</h1>"
+    });
+    var music = Vue.extend({
+        template: "<h1>這是音樂</h1>"
+    });
+
+    var routers = new VueRouter({
+        routes: [{
+            path: "/",
+            component: index
+        }, {
+            path: "/music",
+            component: music
+        }]
+    })
+
+    new Vue({
+        el: "#app",
+        data: {
+
+        },
+
+        router: routers
+    })
+</script>
