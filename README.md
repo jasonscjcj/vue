@@ -13,7 +13,7 @@
 
 2. 開發環境
    Vue安裝和使用，vue的安裝大體上分成三種方式，第一種是通過script標籤引用的，第二種是通過npm(node package manager)來安裝，第三種是通過vue-cli命令行來安裝。作為初學者，建議直接通過第一種方式來安裝，把心思集中在vue的學習上，而不是安裝上。
-   
+
    ```javascript
    # 开发环境
    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -27,6 +27,16 @@
    # 生产环境，使用压缩后的文件
    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
    ```
-   
-   
+3. 如要使用Vue-Router
 
+    ```javascript
+       # 加載最新版的
+       <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+       # 加載指定版本的
+       <script src="https://unpkg.com/vue-router@3.0.7/dist/vue-router.js"></script>
+       # 下載到本地
+       <script src="../../lib/vue-router.js"></script>
+       # 使用npm安裝
+       1. npm install vue-router
+       2. npm install -g vue-router //Global
+    ```
